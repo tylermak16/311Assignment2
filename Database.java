@@ -1,3 +1,11 @@
+/**
+ * Sayings Class
+ * Authors:
+ * Tyler Mak
+ * Alexis Karl Buted
+ * Date: 6/14/2024
+ */
+
 import java.util.*;
 
 public class Database {
