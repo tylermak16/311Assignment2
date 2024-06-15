@@ -9,9 +9,9 @@
 import java.util.*;
 
 /*
-The `TreeSet<Saying> tree` in the `Database` class maintains `Saying` objects in a sorted order based on their Arabic phrases (`arabicS`), 
-facilitating efficient ordered operations like first, last, and predecessor/successor lookups. `arabicToSayings` and `englishToSayings` are `Map<String, List<Saying>>` 
-structures that associate Arabic and English words respectively with lists of `Saying` objects, allowing rapid access to sayings based on these linguistic keys.
+The `Database` class employs a `TreeSet<Saying>` to maintain `Saying` objects in sorted order by their Arabic phrases, ensuring efficient sorted set operations. 
+Additionally, `arabicToSayings` and `englishToSayings` maps enable quick retrieval of `Saying` objects based on Arabic and English words respectively, supporting 
+efficient search operations by linguistic attributes.
 */
 public class Database {
     TreeSet<Saying> tree;
@@ -19,8 +19,9 @@ public class Database {
     Map<String, List<Saying>> englishToSayings;
 
     /*
-    The `public Database()` constructor initializes a `TreeSet` named `tree` to store `Saying` objects in natural order. It also initializes `HashMap` instances 
-    `arabicToSayings` and `englishToSayings` to associate Arabic and English words with lists of `Saying` objects for efficient lookup by language attribute.
+    The `Database` constructor initializes a `TreeSet` to store `Saying` objects in sorted order based on their natural comparison criteria. It also sets up 
+    `HashMap`s (`arabicToSayings` and `englishToSayings`) to efficiently map Arabic and English words to lists of `Saying` objects, enabling fast retrieval 
+    and grouping operations by linguistic attributes.
     */
     public Database() {
         tree = new TreeSet<>();
