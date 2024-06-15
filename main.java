@@ -28,7 +28,6 @@ public class main {
             db.insert(proverb);
         }
 
-        // Demonstrate some operations
         System.out.println("First Saying: " + db.first());
         System.out.println("Last Saying: " + db.last());
         System.out.println("Member check for 'العجلة من الشيطان': " + db.member(proverbs[1]));
