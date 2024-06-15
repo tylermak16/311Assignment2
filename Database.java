@@ -9,8 +9,8 @@
 import java.util.*;
 
 /*
-The `Database` class employs a `TreeSet<Saying>` to maintain `Saying` objects in sorted order by their Arabic phrases, ensuring efficient sorted set operations. 
-Additionally, `arabicToSayings` and `englishToSayings` maps enable quick retrieval of `Saying` objects based on Arabic and English words respectively, supporting 
+The `Database` class employs a `TreeSet<Saying>` to maintain `Saying` objects in sorted order by their Arabic phrases, ensuring efficient sorted set operations.
+Additionally, `arabicToSayings` and `englishToSayings` maps enable quick retrieval of `Saying` objects based on Arabic and English words respectively, supporting
 efficient search operations by linguistic attributes.
 */
 public class Database {
@@ -19,8 +19,8 @@ public class Database {
     Map<String, List<Saying>> englishToSayings;
 
     /*
-    The `Database` constructor initializes a `TreeSet` to store `Saying` objects in sorted order based on their natural comparison criteria. It also sets up 
-    `HashMap`s (`arabicToSayings` and `englishToSayings`) to efficiently map Arabic and English words to lists of `Saying` objects, enabling fast retrieval 
+    The `Database` constructor initializes a `TreeSet` to store `Saying` objects in sorted order based on their natural comparison criteria. It also sets up
+    `HashMap`s (`arabicToSayings` and `englishToSayings`) to efficiently map Arabic and English words to lists of `Saying` objects, enabling fast retrieval
     and grouping operations by linguistic attributes.
     */
     public Database() {
@@ -30,8 +30,8 @@ public class Database {
     }
 
     /*
-    The `Member` method in the `Database` class checks if a `Saying` object `s` is present in the `tree` (`TreeSet<Saying>`). It returns `true` if `s` exists in the `tree`, 
-    indicating membership; otherwise, it returns `false`. This method efficiently leverages the `TreeSet`'s underlying data structure, which ensures fast lookup operations 
+    The `Member` method in the `Database` class checks if a `Saying` object `s` is present in the `tree` (`TreeSet<Saying>`). It returns `true` if `s` exists in the `tree`,
+    indicating membership; otherwise, it returns `false`. This method efficiently leverages the `TreeSet`'s underlying data structure, which ensures fast lookup operations
     based on the natural ordering or provided comparator of `Saying` objects.
     */
     public boolean Member(Saying s) {
@@ -39,8 +39,8 @@ public class Database {
     }
 
     /*
-    The `First` method in the `Database` class returns the first `Saying` object in the `tree` (`TreeSet<Saying>`). This method retrieves the smallest element in the sorted 
-    set according to the natural ordering of `Saying` objects or the comparator defined during `TreeSet` initialization. It provides efficient access to the smallest element 
+    The `First` method in the `Database` class returns the first `Saying` object in the `tree` (`TreeSet<Saying>`). This method retrieves the smallest element in the sorted
+    set according to the natural ordering of `Saying` objects or the comparator defined during `TreeSet` initialization. It provides efficient access to the smallest element
     due to the balanced tree structure of `TreeSet`, ensuring logarithmic time complexity for this operation.
     */
     public Saying First() {
@@ -48,8 +48,8 @@ public class Database {
     }
 
     /*
-    The `Last` method in the `Database` class returns the last `Saying` object in the `tree` (`TreeSet<Saying>`). This method retrieves the largest element in the sorted set 
-    according to the natural ordering of `Saying` objects or the comparator defined during `TreeSet` initialization. It efficiently accesses the largest element due to the 
+    The `Last` method in the `Database` class returns the last `Saying` object in the `tree` (`TreeSet<Saying>`). This method retrieves the largest element in the sorted set
+    according to the natural ordering of `Saying` objects or the comparator defined during `TreeSet` initialization. It efficiently accesses the largest element due to the
     balanced tree structure of `TreeSet`, ensuring logarithmic time complexity for this operation.
     */
     public Saying Last() {
@@ -57,8 +57,8 @@ public class Database {
     }
 
     /*
-    The `Predecessor` method in the `Database` class returns the before `Saying` object in the `tree` (`TreeSet<Saying>`) that is strictly bnefore the given `Saying` object `s`. 
-    It utilizes the `lower` method of the `TreeSet`, which efficiently finds and returns the predecessor of `s` based on the natural ordering of `Saying` objects or the comparator 
+    The `Predecessor` method in the `Database` class returns the before `Saying` object in the `tree` (`TreeSet<Saying>`) that is strictly bnefore the given `Saying` object `s`.
+    It utilizes the `lower` method of the `TreeSet`, which efficiently finds and returns the predecessor of `s` based on the natural ordering of `Saying` objects or the comparator
     defined during `TreeSet` initialization. This operation is efficient due to the balanced tree structure of `TreeSet`, ensuring logarithmic time complexity.
     */
     public Saying Predecessor(Saying s) {
@@ -66,8 +66,8 @@ public class Database {
     }
 
     /*
-    The `Successor` method in the `Database` class returns the after `Saying` object in the `tree` (`TreeSet<Saying>`) that is strictly after the given `Saying` object `s`. 
-    It utilizes the `higher` method of the `TreeSet`, which efficiently finds and returns the successor of `s` based on the natural ordering of `Saying` objects or the comparator 
+    The `Successor` method in the `Database` class returns the after `Saying` object in the `tree` (`TreeSet<Saying>`) that is strictly after the given `Saying` object `s`.
+    It utilizes the `higher` method of the `TreeSet`, which efficiently finds and returns the successor of `s` based on the natural ordering of `Saying` objects or the comparator
     defined during `TreeSet` initialization. This operation is efficient due to the balanced tree structure of `TreeSet`, ensuring logarithmic time complexity.
     */
     public Saying Successor(Saying s) {
@@ -75,8 +75,8 @@ public class Database {
     }
 
     /*
-    The `Insert` method in the `Database` class attempts to add a `Saying` object `s` to the `tree` (`TreeSet<Saying>`). If the addition is successful 
-    (indicating `s` was not already present in the `tree`), it calls the `indexSaying(s)` method to update additional data structures (`arabicToSayings` and `englishToSayings`) 
+    The `Insert` method in the `Database` class attempts to add a `Saying` object `s` to the `tree` (`TreeSet<Saying>`). If the addition is successful
+    (indicating `s` was not already present in the `tree`), it calls the `indexSaying(s)` method to update additional data structures (`arabicToSayings` and `englishToSayings`)
     for efficient querying based on Arabic and English words associated with `s`.
     */
     public void Insert(Saying s) {
@@ -84,20 +84,38 @@ public class Database {
             indexSaying(s);
         }
     }
-
+    /**
+     * Retrieves all Sayings that contain the specified Arabic word.
+     * Uses getOrDefault method which returns every Saying which Arabic Saying contains that word from hashcode and equals method in Sayings
+     *
+     * @param word The Arabic word to search for in the arabicS for each Saying.
+     * @return A list of Sayings containing the specified Arabic word, or an empty list if none found.
+     */
     public List<Saying> MeHua(String word) {
         return arabicToSayings.getOrDefault(word, Collections.emptyList());
     }
 
+    /**
+     * Retrieves all Sayings that contain the specified English word.
+     * Uses getOrDefault method which returns every Saying which English Saying contains that word from hashcode and equals method in Sayings
+     *
+     * @param word The English word to search for in the englishT of each Saying.
+     * @return A list of Sayings containing the specified English word, or an empty list if none found.
+     */
     public List<Saying> WithWord(String word) {
         return englishToSayings.getOrDefault(word, Collections.emptyList());
     }
 
-    private void indexSaying(Saying s) {
-        for (String word : s.getArabic().split("\\s+")) {
+    /**
+     * Indexes each saying object's english and arabic saying/sentence into its respective hashmap.
+     *
+     * @param saying The saying object whose sentences are to be indexed.
+     */
+    private void indexSaying(Saying saying) {
+        for (String word : saying.getArabic().split("\\s+")) {
             arabicToSayings.computeIfAbsent(word, k -> new ArrayList<>()).add(s);
         }
-        for (String word : s.getEnglish().split("\\s+")) {
+        for (String word : saying.getEnglish().split("\\s+")) {
             englishToSayings.computeIfAbsent(word, k -> new ArrayList<>()).add(s);
         }
     }

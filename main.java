@@ -6,17 +6,19 @@
 */
 
 /*
-The `main` method initializes a `Database`, inserts a collection of 10 Arabic proverbs represented as `Saying` objects, and demonstrates operations such 
-as retrieving the first and last proverbs, checking membership, finding predecessors and successors based on Arabic phrases, and querying sayings associated 
+The `main` method initializes a `Database`, inserts a collection of 10 Arabic proverbs represented as `Saying` objects, and demonstrates operations such
+as retrieving the first and last proverbs, checking membership, finding predecessors and successors based on Arabic phrases, and querying sayings associated
 with specific Arabic and English words efficiently using the `Database` class's methods.
+
+DATA STRUCTURE CHOICES: Hashmaps allow for fast access to data using keys, making insertions, deletions, and lookups average-case O(1) making it very efficient for having to find if a word is in every saying in the MeHua and WithWord functions. For the other dictionary operations we used a red black tree as it is self-balancing, guaranteeing O(logn) time for the operations in database.
 */
 public class main {
     public static void main(String[] args){
         Database db = new Database();
 
         /*
-        This array `proverbs` contains 10 instances of the `Saying` class, each representing an Arabic proverb with its corresponding English translation 
-        and explanations. These `Saying` objects are structured to facilitate their insertion into a `Database` structure, allowing for efficient sorting 
+        This array `proverbs` contains 10 instances of the `Saying` class, each representing an Arabic proverb with its corresponding English translation
+        and explanations. These `Saying` objects are structured to facilitate their insertion into a `Database` structure, allowing for efficient sorting
         and querying operations based on their linguistic attributes.
         */
         Saying[] proverbs = {
@@ -33,8 +35,8 @@ public class main {
         };
 
         /*
-        The loop `for (Saying proverb : proverbs) { db.insert(proverb); }` iterates over an array of `Saying` objects `proverbs`, inserting each one into the `Database` 
-        object `db`. This ensures that all proverbs are added to the `TreeSet` within `db`, maintaining sorted order, and updates additional maps (`arabicToSayings` and `englishToSayings`) 
+        The loop `for (Saying proverb : proverbs) { db.insert(proverb); }` iterates over an array of `Saying` objects `proverbs`, inserting each one into the `Database`
+        object `db`. This ensures that all proverbs are added to the `TreeSet` within `db`, maintaining sorted order, and updates additional maps (`arabicToSayings` and `englishToSayings`)
         to facilitate efficient querying by Arabic and English words associated with each `Saying`.
         */
         for (Saying proverb : proverbs) {
@@ -42,7 +44,7 @@ public class main {
         }
 
         /*
-        These statements collectively demonstrate the Database class's capabilities in managing and querying Saying objects efficiently, showcasing ordered retrieval, 
+        These statements collectively demonstrate the Database class's capabilities in managing and querying Saying objects efficiently, showcasing ordered retrieval,
         membership checks, predecessor and successor lookups, and keyword-based querying in both Arabic and English contexts.
         */
         System.out.println("First Saying: " + db.first());
@@ -53,6 +55,6 @@ public class main {
 
         System.out.println("Sayings with Arabic word 'مفتاح': " + db.meHua("مفتاح"));
         System.out.println("Sayings with English word 'money': " + db.withWord("money"));
-        
+
     }
 }
