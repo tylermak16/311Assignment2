@@ -38,21 +38,21 @@ public class main {
         to facilitate efficient querying by Arabic and English words associated with each `Saying`.
         */
         for (Saying proverb : proverbs) {
-            db.insert(proverb);
+            db.Insert(proverb);
         }
 
         /*
         These statements collectively demonstrate the Database class's capabilities in managing and querying Saying objects efficiently, showcasing ordered retrieval, 
         membership checks, predecessor and successor lookups, and keyword-based querying in both Arabic and English contexts.
         */
-        System.out.println("First Saying: " + db.first());
-        System.out.println("Last Saying: " + db.last());
-        System.out.println("Member check for 'العجلة من الشيطان': " + db.member(proverbs[1]));
-        System.out.println("Predecessor of 'العجلة من الشيطان': " + db.predecessor(proverbs[1]));
-        System.out.println("Successor of 'الصبر مفتاح الفرج': " + db.successor(proverbs[0]));
+        System.out.println("First Saying: " + db.First());
+        System.out.println("Last Saying: " + db.Last());
+        System.out.println("Member check for 'العجلة من الشيطان': " + db.Member(proverbs[1]));
+        System.out.println("Predecessor of 'العجلة من الشيطان': " + db.Predecessor(proverbs[1]));
+        System.out.println("Successor of 'الصبر مفتاح الفرج': " + db.Successor(proverbs[0]));
 
-        System.out.println("Sayings with Arabic word 'مفتاح': " + db.meHua("مفتاح"));
-        System.out.println("Sayings with English word 'money': " + db.withWord("money"));
+        System.out.println("Sayings with Arabic word 'مفتاح': " + db.MeHua("مفتاح"));
+        System.out.println("Sayings with English word 'money': " + db.WithWord("money"));
         
     }
 }
