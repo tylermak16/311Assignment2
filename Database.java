@@ -1,7 +1,15 @@
 import java.util.TreeSet;
 
 public class Database {
-    TreeSet<Saying> tree;
+    private TreeSet<Saying> tree;
+    private HashMap<String, ArrayList<Saying>> arabicWordMap;
+    private HashMap<String, ArrayList<Saying>> englishWordMap;
+
+    public Database() {
+        tree = new TreeSet<>(Comparator.comparing(s -> s.arabicS));
+        arabicWordMap = new HashMap<>();
+        englishWordMap = new HashMap<>();
+    }
 
     public boolean Member(Saying s){
         return tree.contains(s);
@@ -19,15 +27,20 @@ public class Database {
         return;
     }
     public void Insert(Saying s){
-        return;
+        tree.add(s);
+        for (String word : s.arabicS.split("\\s+")) {
+            arabicWordMap.computeIfAbsent(word, k -> new ArrayList<>()).add(s);
+        }
+        for (String word : s.englishT.split("\\s+")) {
+            englishWordMap.computeIfAbsent(word, k -> new ArrayList<>()).add(s);
+        }
     }
 
     public ArrayList<Saying> MeHua(String s){
-        return;
+        return arabicWordMap.getOrDefault(word, new ArrayList<>());
     }
 
     public ArrayList<Saying> WithWord(String s){
-        return;
+        return englishWordMap.getOrDefault(word, new ArrayList<>());
     }
-
 }
