@@ -11,6 +11,9 @@ as retrieving the first and last proverbs, checking membership, finding predeces
 with specific Arabic and English words efficiently using the `Database` class's methods.
 
 DATA STRUCTURE CHOICES: Hashmaps allow for fast access to data using keys, making insertions, deletions, and lookups average-case O(1) making it very efficient for having to find if a word is in every saying in the MeHua and WithWord functions. For the other dictionary operations we used a red black tree as it is self-balancing, guaranteeing O(logn) time for the operations in database.
+
+CITATION: 	Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein:
+Introduction to Algorithms, 3rd Edition. MIT Press 2009, ISBN 978-0-262-03384-8, pp. I-XIX, 1-1292
 */
 public class main {
     public static void main(String[] args){
