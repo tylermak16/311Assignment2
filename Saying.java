@@ -15,4 +15,9 @@ public class Saying {
         this.arabicE = arabicE;
         this.englishE = englishE;
     }
+
+    public String toString() {
+        return "Arabic: " + arabicS + "\nEnglish: " + englishT +
+                "\nArabic Explanation: " + arabicE + "\nEnglish Explanation: " + englishE;
+    }
 }
