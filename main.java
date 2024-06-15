@@ -9,7 +9,7 @@
 
 public class main {
     public static void main(String[] args){
-        BST db = new BST();
+        Database db = new Database();
         Saying s1 = new Saying("الصبر مفتاح الفرج", "Patience is the key to relief", "ممارسة الصبر ضرورية لتحقيق الراحة", "Remaining patient helps overcome difficulties and find solutions");
         Saying s2 = new Saying("العجلة من الشيطان", "Haste is from the devil", "الاندفاع يؤدي إلى عواقب سلبية", "Rushing into things often leads to errors and bad outcomes");
 
